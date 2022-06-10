@@ -31,8 +31,9 @@ namespace Library.eCommerce.Services
             {
                 return Inventory;
             }
-            return Inventory.Where(i => (i?.Name?.ToUpper()?.Contains(query.ToUpper()) ?? false )
-                    || (i?.Name?.ToUpper()?.Contains(query.ToUpper()) ?? false));
+            return Inventory.Where(i => 
+                    (i?.Name?.ToUpper()?.Contains(query.ToUpper()) ?? false )
+                    || (i?.Description?.ToUpper()?.Contains(query.ToUpper()) ?? false));
         }
 
         private List<InventoryItem> inventory;

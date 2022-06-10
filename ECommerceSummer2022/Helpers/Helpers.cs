@@ -25,6 +25,11 @@ namespace ECommerceSummer2022.Helpers
                 Console.WriteLine("What is the price of the product?");
                 if (decimal.TryParse(Console.ReadLine(), out decimal price))
                 {
+                    Console.WriteLine("How many are available?");
+                    var quant = 1;
+                    if(!int.TryParse(Console.ReadLine(), out quant)) {
+                        Console.WriteLine("Does not compute -- defaulting quantity to 1");
+                    }
                     if (invItem == null)
                     {
                         return new InventoryItem
@@ -34,12 +39,15 @@ namespace ECommerceSummer2022.Helpers
                             Description = desc ?? string.Empty
                             ,
                             Price = price
+                            ,
+                            Quantity = quant
                         };
                     }
 
                     invItem.Name = name ?? string.Empty;
                     invItem.Description = desc ?? string.Empty;
                     invItem.Price = price;
+                    invItem.Quantity = quant;
                     return invItem;
                 }
             }
